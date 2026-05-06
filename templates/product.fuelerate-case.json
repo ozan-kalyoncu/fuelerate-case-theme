@@ -73,17 +73,18 @@
             "show_on_mobile": false
           }
         },
-        "video_popups": {
+        "video_popups_exTQzL": {
           "type": "video_popups",
           "settings": {
             "heading": "Real People. Real Healing.",
-            "image_2": "shopify://shop_images/video-popup-image-1.jpg",
+            "image_1": "shopify://shop_images/video-popup-image-1.jpg",
+            "image_2": "shopify://shop_images/video-popup-image-2.jpg",
             "video_2": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4",
-            "image_3": "shopify://shop_images/video-popup-image-2.jpg",
+            "image_3": "shopify://shop_images/video-popup-image-1.jpg",
             "video_3": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4",
-            "image_4": "shopify://shop_images/video-popup-image-1.jpg",
+            "image_4": "shopify://shop_images/video-popup-image-2.jpg",
             "video_4": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4",
-            "image_5": "shopify://shop_images/video-popup-image-2.jpg",
+            "image_5": "shopify://shop_images/video-popup-image-1.jpg",
             "video_5": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4"
           }
         },
@@ -117,7 +118,7 @@
         "divider_TcPwmg",
         "add_to_cart",
         "divider",
-        "video_popups",
+        "video_popups_exTQzL",
         "divider_YDPpax",
         "tabs"
       ],
