@@ -84,14 +84,14 @@
         "tabs": {
           "type": "tabs",
           "settings": {
-            "tab_label_1": "Details",
-            "tab_content_1": "<p>Add tab content here.</p>",
-            "tab_label_2": "Shipping",
-            "tab_content_2": "<p>Add shipping information here.</p>",
-            "tab_label_3": "Care",
-            "tab_content_3": "<p>Add care information here.</p>",
-            "tab_label_4": "Returns",
-            "tab_content_4": "<p>Add returns information here.</p>"
+            "tab_label_1": "Description",
+            "tab_content_1": "<p>Experience deeper sleep, less pain, and calmer mornings, all from the comfort of your bed. Terra Therapy’s grounding sheets are woven with 400 thread count organic cotton and 10% pure silver fiber to deliver a safe, comfortable, and effective grounding connection every night.  Plug into any grounded outlet and let Earth’s natural electrons flow through the sheet to support your body’s recovery, from better sleep and reduced inflammation to calmer nervous system function.  No EMFs. No batteries. Just effortless, science-backed healing while you sleep.</p>",
+            "tab_label_2": "Who is it for?",
+            "tab_content_2": "<p>Grounding can support you if you’re:<br/>Struggling with poor sleep, racing thoughts, or insomnia<br/>Waking up stiff, sore, or fatigued<br/>Living with chronic pain, inflammation, or autoimmune issues<br/>Experiencing anxiety, stress, or hormonal imbalance<br/>Looking for a natural, non-invasive wellness solution</p>",
+            "tab_label_3": "Shipping & Returns",
+            "tab_content_3": "<p>Free U.S. shipping on orders over $100<br/>Fast delivery: 2–6 days (U.S. & Canada), 7–10 days (EU & international)<br/>90-Day Money-Back Guarantee: Try it risk-free. If you don’t feel the benefits, send it back. No questions asked.<br/>Returns: Contact our support team for easy return instructions. Products must be in good condition.<br/>Support: Our team is available 24/7 to help with ordering, setup, or troubleshooting.<br/></p>",
+            "tab_label_4": "Care Instructions",
+            "tab_content_4": "<p>To maintain conductivity and extend the life of your grounding sheet:<br/>Wash on gentle cycle with mild detergent<br/>Avoid bleach, fabric softeners, or dryer sheets<br/>Air dry when possible, or tumble dry on low<br/>Do not dry clean<br/>Wash regularly to remove body oils that can affect performance<br/><br/>We include full care instructions in the box, and our customer team is always available if you need help.</p>"
           }
         }
       },
