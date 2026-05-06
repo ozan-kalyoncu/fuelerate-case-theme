@@ -1,37 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-product-fuelerate",
       "blocks": {
         "title": {
-          "type": "title"
+          "type": "title",
+          "settings": {
+            "uppercase": false
+          }
         },
         "labels": {
-          "type": "labels"
+          "type": "labels",
+          "settings": {
+            "alert_text": "Low stock",
+            "success_text": "In stock"
+          }
         },
         "description": {
-          "type": "description"
+          "type": "description",
+          "settings": {}
         },
         "price": {
-          "type": "price"
+          "type": "price",
+          "settings": {
+            "show_badges": true
+          }
         },
         "text": {
-          "type": "text"
+          "type": "text",
+          "settings": {}
         },
         "text_with_icons": {
-          "type": "text_with_icons"
+          "type": "text_with_icons",
+          "settings": {
+            "heading": "Why you need this?",
+            "icon_1": "moon",
+            "text_1": "Fall asleep faster and wake up fully rested",
+            "icon_2": "strength",
+            "text_2": "Less joint pain and morning stiffness",
+            "icon_3": "emoji",
+            "text_3": "Calmer mood and lower daily stress",
+            "icon_4": "battery",
+            "text_4": "More energy throughout the day",
+            "icon_5": "cotton",
+            "text_5": "400 TC organic cotton, the softest and strongest grounding sheet",
+            "icon_6": "wash",
+            "text_6": "Machine washable and built to last"
+          }
         },
         "tabs": {
-          "type": "tabs"
+          "type": "tabs",
+          "settings": {
+            "tab_label_1": "Details",
+            "tab_content_1": "<p>Add tab content here.</p>",
+            "tab_label_2": "Shipping",
+            "tab_content_2": "<p>Add shipping information here.</p>",
+            "tab_label_3": "Care",
+            "tab_content_3": "<p>Add care information here.</p>",
+            "tab_label_4": "Returns",
+            "tab_content_4": "<p>Add returns information here.</p>"
+          }
         },
         "video_popups": {
-          "type": "video_popups"
+          "type": "video_popups",
+          "settings": {
+            "heading": "Real People. Real Healing."
+          }
         },
         "add_to_cart": {
-          "type": "add_to_cart"
+          "type": "add_to_cart",
+          "settings": {}
         },
         "divider": {
-          "type": "divider"
+          "type": "divider",
+          "settings": {
+            "show_on_mobile": false
+          }
         }
       },
       "block_order": [
@@ -46,7 +99,20 @@
         "add_to_cart",
         "divider"
       ],
-      "settings": {}
+      "settings": {
+        "image_aspect_ratio": "portrait",
+        "enable_video_looping": true,
+        "background_color": "#f4f3ee",
+        "primary_text_color": "#31331e",
+        "badge_color": "#56814c",
+        "button_background_color": "#a8ca1b",
+        "border_color": "#000000",
+        "alert_color": "#ff9696",
+        "alert_label_bg_color": "#ff8181",
+        "success_color": "#2aac11",
+        "success_label_bg_color": "#7aa66f",
+        "compare_price_color": "#ff3030"
+      }
     }
   },
   "order": [
