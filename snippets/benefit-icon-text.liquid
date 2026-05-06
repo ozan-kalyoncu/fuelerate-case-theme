@@ -1,0 +1,19 @@
+{% comment %}
+  snippets/benefit-icon-text.liquid
+{% endcomment %}
+
+{% if block.settings.content_icon != 'none' or block.settings.icon_text != blank %}
+  <div class="benefits-showcase__icon-text">
+    {% if block.settings.content_icon != 'none' %}
+      <span class="benefits-showcase__icon-text-icon">
+        {% render 'svg-icons', icon: block.settings.content_icon %}
+      </span>
+    {% endif %}
+
+    {% if block.settings.icon_text != blank %}
+      <span class="benefits-showcase__icon-text-label">
+        {{ block.settings.icon_text | escape }}
+      </span>
+    {% endif %}
+  </div>
+{% endif %}

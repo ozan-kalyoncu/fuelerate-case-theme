@@ -626,7 +626,7 @@ button {
 
   .section--container__inner {
     display: grid;
-    grid-template-columns: clamp(320px, 48vw, 690px) clamp(360px, 52vw, 750px);
+    grid-template-columns: clamp(320px, 48vw, 690px) minmax(0, 1fr);
   }
 
   .product__spacer.divider.hide-for-desktop {
@@ -653,7 +653,7 @@ button {
   }
 
   .product-content--container {
-    padding: 50px 46px;
+    padding: 50px 84px 50px 46px;
   }
 
   .product__title {
@@ -675,8 +675,8 @@ button {
   }
 
   .product__video-popups {
-    margin: 0 -46px;
-    padding: 0 46px;
+    margin: 0 -84px 0 -46px;
+    padding: 0 84px 0 46px;
   }
 
   .product__video-popups--container {

@@ -7,6 +7,8 @@ if (!customElements.get('benefits-showcase')) {
             this.onAccordionClick = this.onAccordionClick.bind(this);
             this.onBreakpointChange = this.onBreakpointChange.bind(this);
 
+            this.onShopifyBlockSelect = this.onShopifyBlockSelect.bind(this);
+
             this.mediaQuery = window.matchMedia('(min-width: 750px)');
         }
 
@@ -27,6 +29,8 @@ if (!customElements.get('benefits-showcase')) {
             this.mediaQuery.addEventListener('change', this.onBreakpointChange);
 
             this.syncToActiveState();
+
+            this.addEventListener('shopify:block:select', this.onShopifyBlockSelect);
         }
 
         disconnectedCallback() {
@@ -39,6 +43,38 @@ if (!customElements.get('benefits-showcase')) {
             });
 
             this.mediaQuery.removeEventListener('change', this.onBreakpointChange);
+
+            this.removeEventListener('shopify:block:select', this.onShopifyBlockSelect);
+        }
+
+        onShopifyBlockSelect(event) {
+            if (!this.contains(event.target)) return;
+
+            const selectedElement = event.target;
+
+            const tab =
+                selectedElement.matches('[data-benefit-tab]')
+                ? selectedElement
+                : selectedElement.querySelector('[data-benefit-tab]');
+
+            const accordion =
+                selectedElement.matches('[data-benefit-accordion]')
+                ? selectedElement
+                : selectedElement.querySelector('[data-benefit-accordion]');
+
+            const panel =
+                selectedElement.matches('[data-benefit-panel]')
+                ? selectedElement
+                : selectedElement.querySelector('[data-benefit-panel]');
+
+            const targetId =
+                tab?.getAttribute('aria-controls') ||
+                accordion?.getAttribute('aria-controls') ||
+                panel?.id;
+
+            if (!targetId) return;
+
+            this.activateItem(targetId);
         }
 
         onTabClick(event) {

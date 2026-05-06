@@ -5,6 +5,7 @@
 {{ 'benefits-showcase.css' | asset_url | stylesheet_tag }}
 <benefits-showcase
   class="benefits-showcase"
+  data-auto-slide="{{ section.settings.enable_auto_slide }}"
   style="
     --benefits-background: {{ background_color }};
     --benefits-primary: {{ primary_color }};
@@ -18,9 +19,9 @@
         <div class="benefits-showcase__header">
 
             {% if section.settings.heading != blank %}
-            <h2 class="benefits-showcase__heading">
+            <div class="benefits-showcase__heading">
                 {{ section.settings.heading }}
-            </h2>
+            </div>
             {% endif %}
 
             {% if section.settings.description != blank %}
@@ -83,36 +84,60 @@
     <!-- RIGHT / MOBILE: Content -->
     <div class="benefits-showcase__contents">
     {% for block in section.blocks %}
-        {% if block.settings.title != blank and block.settings.content != blank %}
-        <div class="benefits-showcase__item">
+        {% if block.settings.title != blank %}
+        <div class="benefits-showcase__item" {{ block.shopify_attributes }}>
 
             <!-- Accordion trigger (mobile) -->
             <button
-            type="button"
-            class="benefits-showcase__accordion-button{% if forloop.first %} is-active{% endif %}"
-            aria-controls="BenefitsPanel-{{ section.id }}-{{ block.id }}"
-            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
-            data-benefit-accordion
+                type="button"
+                class="benefits-showcase__accordion-button{% if forloop.first %} is-active{% endif %}"
+                aria-controls="BenefitsPanel-{{ section.id }}-{{ block.id }}"
+                aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                data-benefit-accordion
             >
-            {% if block.settings.icon != 'none' %}
+                {% if block.settings.icon != 'none' %}
                 <span class="benefits-showcase__accordion-icon">
-                {% render 'svg-icons', icon: block.settings.icon %}
+                    {% render 'svg-icons', icon: block.settings.icon %}
                 </span>
-            {% endif %}
+                {% endif %}
 
-            <span>{{ block.settings.title | escape }}</span>
+                <span>{{ block.settings.title | escape }}</span>
             </button>
 
             <!-- Shared panel -->
             <div
-            id="BenefitsPanel-{{ section.id }}-{{ block.id }}"
-            class="benefits-showcase__panel{% if forloop.first %} is-active{% endif %}"
-            data-benefit-panel
-            {% unless forloop.first %}hidden{% endunless %}
+                id="BenefitsPanel-{{ section.id }}-{{ block.id }}"
+                class="benefits-showcase__panel{% if forloop.first %} is-active{% endif %}"
+                data-benefit-panel
+                {% unless forloop.first %}hidden{% endunless %}
             >
-            <div class="benefits-showcase__panel-content rte">
-                {{ block.settings.content }}
-            </div>
+                <div class="benefits-showcase__panel-content">
+                    {% if block.settings.content_heading != blank %}
+                        <div class="benefits-showcase__panel-heading">
+                        {{ block.settings.content_heading | escape }}
+                        </div>
+                    {% endif %}
+
+                    {% if block.settings.description != blank %}
+                        <div class="benefits-showcase__panel-description rte">
+                        {{ block.settings.description }}
+                        </div>
+                    {% endif %}
+
+                    {% if block.settings.icon_text_position == 'above_list' %}
+                        {% render 'benefit-icon-text', block: block %}
+                    {% endif %}
+
+                    {% if block.settings.bullet_list != blank %}
+                        <div class="benefits-showcase__panel-list rte">
+                        {{ block.settings.bullet_list }}
+                        </div>
+                    {% endif %}
+
+                    {% if block.settings.icon_text_position == 'below_list' %}
+                        {% render 'benefit-icon-text', block: block %}
+                    {% endif %}
+                </div>
             </div>
 
         </div>
@@ -151,6 +176,12 @@
       "id": "primary_color",
       "label": "Primary color",
       "default": "#31331E"
+    },
+    {
+        "type": "checkbox",
+        "id": "enable_auto_slide",
+        "label": "Enable auto slide",
+        "default": true
     }
   ],
   "blocks": [
@@ -195,10 +226,72 @@
           "label": "Image"
         },
         {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-          "default": "<p>Describe the benefit here.</p>"
+            "type": "text",
+            "id": "content_heading",
+            "label": "Content heading",
+            "default": "The Relief Recovery Mat"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Add benefit description here.</p>"
+        },
+        {
+            "type": "richtext",
+            "id": "bullet_list",
+            "label": "Bullet list",
+            "default": "<ul><li>Supports recovery</li><li>Helps restore balance</li><li>Easy to use daily</li></ul>"
+        },
+        {
+            "type": "header",
+            "content": "Icon text"
+        },
+        {
+            "type": "select",
+            "id": "icon_text_position",
+            "label": "Icon text position",
+            "options": [
+                {
+                "value": "above_list",
+                "label": "Above bullet list"
+                },
+                {
+                "value": "below_list",
+                "label": "Below bullet list"
+                }
+            ],
+            "default": "below_list"
+        },
+        {
+            "type": "select",
+            "id": "content_icon",
+            "label": "Icon",
+            "options": [
+                { "value": "none", "label": "None" },
+                { "value": "battery", "label": "Battery" },
+                { "value": "stream", "label": "Stream" },
+                { "value": "shield", "label": "Shield" },
+                { "value": "cotton", "label": "Cotton" },
+                { "value": "heart", "label": "Heart" },
+                { "value": "emoji", "label": "Emoji" },
+                { "value": "package", "label": "Package" },
+                { "value": "flag", "label": "Flag" },
+                { "value": "genetics", "label": "Genetics" },
+                { "value": "hematology", "label": "Hematology" },
+                { "value": "moon", "label": "Moon" },
+                { "value": "strength", "label": "Strength" },
+                { "value": "tree", "label": "Tree" },
+                { "value": "test_tube", "label": "Test Tube" },
+                { "value": "wash", "label": "Wash" }
+            ],
+            "default": "none"
+        },
+        {
+            "type": "text",
+            "id": "icon_text",
+            "label": "Icon text",
+            "default": "Grounded Recovery"
         }
       ]
     }
