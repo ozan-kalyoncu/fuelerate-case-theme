@@ -1,0 +1,169 @@
+{%- stylesheet -%}
+  .text-icons-bar {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.text-icons-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 28px 20px 27px 20px;
+  flex-wrap: wrap;
+}
+
+.text-icons-bar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.text-icons-bar__text {
+    font-size: 20px;
+    line-height: 1.1;
+}
+
+.text-icons-bar__icon {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+}
+
+.text-icons-bar__icon svg,
+.text-icons-bar__icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.text-icons-bar__icon .ko-icon-fill path {
+    fill: var(--text);
+}
+
+.text-icons-bar__icon .ko-icon-stroke path {
+    stroke: var(--text);
+}
+
+/* Mobile behavior */
+@media (max-width: 749px) {
+  .text-icons-bar__inner {
+    padding: 23px 19px;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .text-icons-bar__text {
+    font-size: 16px;
+  }
+
+  .text-icons-bar__item {
+    flex: 0 0 auto;
+  }
+}
+{%- endstylesheet -%}
+
+
+{% liquid
+  assign bg = section.settings.background_color
+  assign text_color = section.settings.text_color
+%}
+
+<div
+  class="text-icons-bar"
+  style="
+    --bg: {{ bg }};
+    --text: {{ text_color }};
+  "
+>
+  <div class="text-icons-bar__inner">
+    {% for block in section.blocks %}
+      <div class="text-icons-bar__item" {{ block.shopify_attributes }}>
+        
+        {% if block.settings.icon != 'none' %}
+          <span class="text-icons-bar__icon">
+            {% render 'svg-icons', icon: block.settings.icon %}
+          </span>
+        {% endif %}
+
+        {% if block.settings.text != blank %}
+          <span class="text-icons-bar__text">
+            {{ block.settings.text }}
+          </span>
+        {% endif %}
+
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Text with icons bar",
+  "tag": "section",
+  "class": "section-text-icons-bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#31331E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "battery", "label": "Battery" },
+            { "value": "stream", "label": "Stream" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "cotton", "label": "Cotton" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "emoji", "label": "Emoji" },
+            { "value": "package", "label": "Package" },
+            { "value": "flag", "label": "Flag" },
+            { "value": "genetics", "label": "Genetics" },
+            { "value": "hematology", "label": "Hematology" },
+            { "value": "moon", "label": "Moon" },
+            { "value": "strength", "label": "Strength" },
+            { "value": "tree", "label": "Tree" },
+            { "value": "test_tube", "label": "Test Tube" },
+            { "value": "wash", "label": "Wash" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Your text here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with icons bar"
+    }
+  ]
+}
+{% endschema %}

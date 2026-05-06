@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-fuelerate",
+      "blocks": {
+        "title": {
+          "type": "title"
+        },
+        "labels": {
+          "type": "labels"
+        },
+        "description": {
+          "type": "description"
+        },
+        "price": {
+          "type": "price"
+        },
+        "text": {
+          "type": "text"
+        },
+        "text_with_icons": {
+          "type": "text_with_icons"
+        },
+        "tabs": {
+          "type": "tabs"
+        },
+        "video_popups": {
+          "type": "video_popups"
+        },
+        "add_to_cart": {
+          "type": "add_to_cart"
+        },
+        "divider": {
+          "type": "divider"
+        }
+      },
+      "block_order": [
+        "title",
+        "labels",
+        "description",
+        "price",
+        "text",
+        "text_with_icons",
+        "tabs",
+        "video_popups",
+        "add_to_cart",
+        "divider"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
