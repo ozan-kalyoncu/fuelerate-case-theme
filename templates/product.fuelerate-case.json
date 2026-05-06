@@ -21,8 +21,8 @@
         "labels": {
           "type": "labels",
           "settings": {
-            "alert_text": "Low stock",
-            "success_text": "In stock"
+            "alert_text": "Limited Stock",
+            "success_text": "23 people viewing this now"
           }
         },
         "description": {
