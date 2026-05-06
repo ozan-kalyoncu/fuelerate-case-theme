@@ -57,6 +57,12 @@
             "text_6": "Machine washable and built to last"
           }
         },
+        "divider_TcPwmg": {
+          "type": "divider",
+          "settings": {
+            "show_on_mobile": true
+          }
+        },
         "add_to_cart": {
           "type": "add_to_cart",
           "settings": {}
@@ -108,6 +114,7 @@
         "price",
         "text",
         "text_with_icons",
+        "divider_TcPwmg",
         "add_to_cart",
         "divider",
         "video_popups",
