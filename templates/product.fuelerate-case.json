@@ -177,8 +177,8 @@
       ],
       "name": "Text with icons bar",
       "settings": {
-        "background_color": "#31331E",
-        "text_color": "#FFFFFF"
+        "background_color": "#31331e",
+        "text_color": "#ffffff"
       }
     },
     "benefits_showcase_EebFQh": {
@@ -189,7 +189,12 @@
           "settings": {
             "icon": "none",
             "title": "Neurological & Mental Health",
-            "content": "<h1>Neurological & Mental Health</h1><p><strong>Grounding helps calm and stabilize the nervous system, supporting those dealing with:<br/></strong><br/>Migraines & headaches<br/>Neuropathy & brain fog<br/>Anxiety, depression & mood swings<br/>ADHD & focus issues<br/>Insomnia & disrupted sleep</p>"
+            "content_heading": "Neurological & Mental Health",
+            "description": "<p>Grounding helps calm and stabilize the nervous system, supporting those dealing with:</p>",
+            "bullet_list": "<ul><li>Migraines & headaches</li><li>Neuropathy & brain fog</li><li>Anxiety, depression & mood swings</li><li>ADHD & focus issues</li><li>Insomnia & disrupted sleep</li></ul>",
+            "icon_text_position": "below_list",
+            "content_icon": "test_tube",
+            "icon_text": "Explore the science behind these benefits"
           }
         },
         "benefit_daiqbe": {
@@ -197,7 +202,12 @@
           "settings": {
             "icon": "none",
             "title": "Musculoskeletal Pain & Inflammation",
-            "content": "<p>Musculoskeletal Pain & Inflammation</p>"
+            "content_heading": "Musculoskeletal Pain & Inflammation",
+            "description": "<p>By reducing chronic inflammation, grounding can offer relief from:</p>",
+            "bullet_list": "<ul><li>Arthritis (RA & OA)</li><li>Fibromyalgia</li><li>Joint, back & neck pain</li><li>Chronic fatigue syndrome</li><li>Post-exercise soreness</li></ul>",
+            "icon_text_position": "below_list",
+            "content_icon": "test_tube",
+            "icon_text": "Explore the science behind these benefits"
           }
         },
         "benefit_mQbFPd": {
@@ -205,7 +215,12 @@
           "settings": {
             "icon": "hematology",
             "title": "Cardiovascular & Circulatory Health",
-            "content": "<p>Describe the benefit here.</p>"
+            "content_heading": "Cardiovascular & Circulatory Health",
+            "description": "<p>Grounding supports healthy blood flow and thermal regulation. Ideal for those managing:</p>",
+            "bullet_list": "<ul><li>Poor circulation</li><li>High blood pressure</li><li>Swollen legs & feet</li><li>Varicose veins</li><li>Cold extremities</li></ul>",
+            "icon_text_position": "below_list",
+            "content_icon": "test_tube",
+            "icon_text": "Explore the science behind these benefits"
           }
         },
         "benefit_x76NAT": {
@@ -213,7 +228,12 @@
           "settings": {
             "icon": "stream",
             "title": "Immune & Inflammatory Conditions",
-            "content": "<p>Describe the benefit here.</p>"
+            "content_heading": "Immune & Inflammatory Conditions",
+            "description": "<p>By calming the body’s inflammatory response, grounding may support conditions like:</p>",
+            "bullet_list": "<ul><li>Autoimmune flare-ups (Lupus, MS, RA)</li><li>Allergies & asthma</li><li>Inflammation-related skin issues</li></ul>",
+            "icon_text_position": "above_list",
+            "content_icon": "test_tube",
+            "icon_text": "Explore the science behind these benefits"
           }
         },
         "benefit_xdWxDK": {
@@ -221,7 +241,12 @@
           "settings": {
             "icon": "genetics",
             "title": "Hormonal & Metabolic Balance",
-            "content": "<p>Describe the benefit here.</p>"
+            "content_heading": "Hormonal & Metabolic Balance",
+            "description": "<p>Grounding helps support hormone and metabolic regulation. Particularly helpful for:</p>",
+            "bullet_list": "<ul><li>Menopause & perimenopause</li><li>PCOS & irregular cycles</li><li>Thyroid imbalance</li><li>Insulin resistance & blood sugar issues</li></ul>",
+            "icon_text_position": "below_list",
+            "content_icon": "test_tube",
+            "icon_text": "Explore the science behind these benefits"
           }
         },
         "benefit_UXkycf": {
@@ -229,7 +254,12 @@
           "settings": {
             "icon": "heart",
             "title": "Specialized Support",
-            "content": "<p>Describe the benefit here.</p>"
+            "content_heading": "The Relief Recovery Mat",
+            "description": "<p>A daily grounding practice can also support:</p>",
+            "bullet_list": "<ul><li>Injury & post-surgery recovery</li><li>Pregnancy support (with doctor approval)</li><li>Jet lag & circadian disruption</li><li>Skin health (eczema, psoriasis)</li><li>Athletic performance & muscle recovery</li></ul>",
+            "icon_text_position": "below_list",
+            "content_icon": "none",
+            "icon_text": "Grounded Recovery"
           }
         }
       },
@@ -245,8 +275,9 @@
       "settings": {
         "heading": "One Natural Solution. Whole-Body Benefits.",
         "description": "<p>Grounding supports every major system in your body, helping relieve chronic symptoms, restore balance, and promote long-term wellness. Backed by 20+ years of research and thousands of customer results.</p>",
-        "background_color": "#F1EFE8",
-        "primary_color": "#31331E"
+        "background_color": "#f1efe8",
+        "primary_color": "#31331e",
+        "enable_auto_slide": true
       }
     }
   },
