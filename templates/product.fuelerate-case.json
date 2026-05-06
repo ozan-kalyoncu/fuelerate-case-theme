@@ -254,12 +254,12 @@
           "settings": {
             "icon": "heart",
             "title": "Specialized Support",
-            "content_heading": "The Relief Recovery Mat",
+            "content_heading": "Specialized Support",
             "description": "<p>A daily grounding practice can also support:</p>",
             "bullet_list": "<ul><li>Injury & post-surgery recovery</li><li>Pregnancy support (with doctor approval)</li><li>Jet lag & circadian disruption</li><li>Skin health (eczema, psoriasis)</li><li>Athletic performance & muscle recovery</li></ul>",
             "icon_text_position": "below_list",
-            "content_icon": "none",
-            "icon_text": "Grounded Recovery"
+            "content_icon": "test_tube",
+            "icon_text": "Explore the science behind these benefits"
           }
         }
       },
