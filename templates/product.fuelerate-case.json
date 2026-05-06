@@ -81,6 +81,12 @@
             "video_5": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4"
           }
         },
+        "divider_YDPpax": {
+          "type": "divider",
+          "settings": {
+            "show_on_mobile": false
+          }
+        },
         "tabs": {
           "type": "tabs",
           "settings": {
@@ -105,6 +111,7 @@
         "add_to_cart",
         "divider",
         "video_popups",
+        "divider_YDPpax",
         "tabs"
       ],
       "settings": {
