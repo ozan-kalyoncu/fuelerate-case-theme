@@ -136,9 +136,123 @@
         "success_label_bg_color": "#7aa66f",
         "compare_price_color": "#ff3030"
       }
+    },
+    "text_with_icons_bar_fx8KT4": {
+      "type": "text-with-icons-bar",
+      "blocks": {
+        "item_TDWcjr": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "text": "90-Day Results-Backed Guarantee"
+          }
+        },
+        "item_FUEHFK": {
+          "type": "item",
+          "settings": {
+            "icon": "flag",
+            "text": "Designed in USA"
+          }
+        },
+        "item_cDYmLz": {
+          "type": "item",
+          "settings": {
+            "icon": "package",
+            "text": "Ships in 2–6 Days"
+          }
+        },
+        "item_P4QQnm": {
+          "type": "item",
+          "settings": {
+            "icon": "tree",
+            "text": "A Tree Planted per Order"
+          }
+        }
+      },
+      "block_order": [
+        "item_TDWcjr",
+        "item_FUEHFK",
+        "item_cDYmLz",
+        "item_P4QQnm"
+      ],
+      "name": "Text with icons bar",
+      "settings": {
+        "background_color": "#31331E",
+        "text_color": "#FFFFFF"
+      }
+    },
+    "benefits_showcase_EebFQh": {
+      "type": "benefits-showcase",
+      "blocks": {
+        "benefit_GTQm4T": {
+          "type": "benefit",
+          "settings": {
+            "icon": "none",
+            "title": "Neurological & Mental Health",
+            "content": "<h1>Neurological & Mental Health</h1><p><strong>Grounding helps calm and stabilize the nervous system, supporting those dealing with:<br/></strong><br/>Migraines & headaches<br/>Neuropathy & brain fog<br/>Anxiety, depression & mood swings<br/>ADHD & focus issues<br/>Insomnia & disrupted sleep</p>"
+          }
+        },
+        "benefit_daiqbe": {
+          "type": "benefit",
+          "settings": {
+            "icon": "none",
+            "title": "Musculoskeletal Pain & Inflammation",
+            "content": "<p>Musculoskeletal Pain & Inflammation</p>"
+          }
+        },
+        "benefit_mQbFPd": {
+          "type": "benefit",
+          "settings": {
+            "icon": "hematology",
+            "title": "Cardiovascular & Circulatory Health",
+            "content": "<p>Describe the benefit here.</p>"
+          }
+        },
+        "benefit_x76NAT": {
+          "type": "benefit",
+          "settings": {
+            "icon": "stream",
+            "title": "Immune & Inflammatory Conditions",
+            "content": "<p>Describe the benefit here.</p>"
+          }
+        },
+        "benefit_xdWxDK": {
+          "type": "benefit",
+          "settings": {
+            "icon": "genetics",
+            "title": "Hormonal & Metabolic Balance",
+            "content": "<p>Describe the benefit here.</p>"
+          }
+        },
+        "benefit_UXkycf": {
+          "type": "benefit",
+          "settings": {
+            "icon": "heart",
+            "title": "Specialized Support",
+            "content": "<p>Describe the benefit here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_GTQm4T",
+        "benefit_daiqbe",
+        "benefit_mQbFPd",
+        "benefit_x76NAT",
+        "benefit_xdWxDK",
+        "benefit_UXkycf"
+      ],
+      "name": "Benefits showcase",
+      "settings": {
+        "heading": "One Natural Solution. Whole-Body Benefits.",
+        "description": "<p>Grounding supports every major system in your body, helping relieve chronic symptoms, restore balance, and promote long-term wellness. Backed by 20+ years of research and thousands of customer results.</p>",
+        "background_color": "#F1EFE8",
+        "primary_color": "#31331E"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "text_with_icons_bar_fx8KT4",
+    "benefits_showcase_EebFQh"
   ]
 }
