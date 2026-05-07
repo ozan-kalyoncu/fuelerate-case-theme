@@ -1,0 +1,114 @@
+{%- liquid
+  assign lazy_loading = true
+
+  unless sizes
+    assign sizes = image.width | append: 'x' | append: image.height
+  endunless
+  assign image_sizes = sizes | split: ','
+
+  if priority
+    assign fetchpriority = priority
+  else
+    assign fetchpriority = 'auto'
+  endif
+
+  assign first_size = image_sizes[0] | strip | split: 'x'
+  assign w = first_size[0] | plus: 0
+  assign first_h = first_size[1] | plus: 0
+  if first_h == 0
+    assign w = first_size[0] | plus: 0
+    assign h = image.aspect_ratio | times: 1.0
+    assign h = w | divided_by: image.aspect_ratio | round
+  else
+    assign h = first_h
+  endif
+  if retina
+    assign w = w | divided_by: 2
+    assign h = h | divided_by: 2
+  endif
+
+  assign focal_point = image.presentation.focal_point
+-%}
+
+{%- capture srcset -%}
+  {%- for size in image_sizes -%}
+    {%- liquid
+      assign small_size = '20x'
+      assign size_arr = size | strip | split: 'x'
+      assign size_w = size_arr[0]
+      assign size_h = size_arr[1]
+
+      if size_h == blank
+        assign size_h = '0'
+      endif
+
+      # If width is 0 but height is provided, compute width to keep aspect ratio
+      if size_w == '0' and size_h != '0'
+        assign size_w = image.width | times: size_h | divided_by: image.height | floor
+      endif
+
+      # Build tiny placeholder size (blur-up)
+      if size_h != '0' and size_w != '0'
+        assign small_w = size_w | times: 20 | divided_by: size_h | floor
+        assign small_size = '20x' | append: small_w
+      endif
+    -%}
+    {{- image | image_url: width: size_w -}}w,
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign last_slice = srcset | size | minus: 1
+
+  capture src
+    if lazy_loading
+      assign image_size = small_size
+    else
+      assign image_size = image_sizes[0] | strip
+    endif
+
+    assign image_size_arr = image_size | split: 'x'
+    assign src_w = image_size_arr[0]
+    assign src_h = image_size_arr[1]
+
+    if src_h == blank
+      assign src_h = '0'
+    endif
+
+    if src_w != '0' and src_h != '0'
+      echo image | image_url: width: src_w, height: src_h
+    elsif src_w == '0' and src_h != '0'
+      echo image | image_url: height: src_h
+    else
+      echo image | image_url: width: src_w
+    endif
+  endcapture
+-%}
+
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{% if priority %}
+<img
+  class="{% unless lazy_loading %} no-blur{% endunless %}{% if retina %} retina_size{% endif %} {{ classes | escape }}"
+  width="{{ w }}"
+  height="{{ h }}"
+  data-sizes="auto"
+  {% if defer %}data-{% endif %}src="{{ src }}"
+  srcset="{{ srcset | slice: 0, last_slice | strip_newlines }}"
+  loading="eager"
+  fetchpriority="{{ fetchpriority }}"
+  alt="{{ image.alt | escape }}"
+  {% if focal_point %}style="object-position: {{ focal_point }};"{% endif %}
+/>
+{% else %}
+<img
+  class="{% if lazy_loading %}lazyload{% endif %}{% unless lazy_loading %} no-blur{% endunless %}{% if retina %} retina_size{% endif %} {{ classes | escape }}"
+  width="{{ w }}"
+  height="{{ h }}"
+  data-sizes="auto"
+  {% if defer %}data-{% endif %}src="{{ src }}"
+  srcset="{{ srcset | slice: 0, last_slice | strip_newlines }}"
+  fetchpriority="{{ fetchpriority }}"
+  alt="{{ image.alt | escape }}"
+  {% if focal_point %}style="object-position: {{ focal_point }};"{% endif %}
+/>
+{% endif %}

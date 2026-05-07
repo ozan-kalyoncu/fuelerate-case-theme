@@ -147,7 +147,6 @@ if (!customElements.get('product-tabs')) {
             const isActive = btn.getAttribute('aria-controls') === targetId;
 
             btn.classList.toggle('is-active', isActive);
-            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
             });
 
             this.accordionButtons.forEach((btn) => {

@@ -41,7 +41,6 @@
                     type="button"
                     class="benefits-showcase__tab{% if forloop.first %} is-active{% endif %}"
                     aria-controls="BenefitsPanel-{{ section.id }}-{{ block.id }}"
-                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
                     data-benefit-tab
                     {{ block.shopify_attributes }}
                     >
@@ -70,14 +69,7 @@
                     data-panel-id="BenefitsPanel-{{ section.id }}-{{ block.id }}"
                 >
                     {% if block.settings.image != blank %}
-                    {{
-                        block.settings.image
-                        | image_url: width: 900
-                        | image_tag:
-                        loading: 'lazy',
-                        class: 'benefits-showcase__image',
-                        widths: '360, 540, 720, 900'
-                    }}
+                    {% render 'responsive-image', image: block.settings.image, sizes: '660x0,330x0', classes: 'benefits-showcase__image' %}
                     {% endif %}
                 </div>
                 {% endfor %}

@@ -203,7 +203,6 @@ if (!customElements.get('benefits-showcase')) {
             const isActive = tab.getAttribute('aria-controls') === targetId;
 
             tab.classList.toggle('is-active', isActive);
-            tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
             });
 
             this.accordions.forEach((accordion) => {

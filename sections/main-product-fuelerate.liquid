@@ -1,3 +1,11 @@
+{{ 'vendor.min.js' | asset_url | script_tag }}
+<script>
+window.lazySizesConfig = window.lazySizesConfig || {};
+window.lazySizesConfig.expand = 250;
+window.lazySizesConfig.loadMode = 1;
+window.lazySizesConfig.loadHidden = false;
+</script>
+
 {% liquid
   assign image_aspect_ratio = section.settings.image_aspect_ratio
   assign enable_video_looping = section.settings.enable_video_looping
@@ -13,6 +21,8 @@
   assign success_color = section.settings.success_color | color_to_rgb | remove: 'rgb(' | remove: ')'
   assign success_bg_color = section.settings.success_label_bg_color | color_to_rgb | remove: 'rgb(' | remove: ')'
   assign compare_price_color = section.settings.compare_price_color | color_to_rgb | remove: 'rgb(' | remove: ')'
+
+  assign fetch_priority = false
 %}
 {{ 'main-product-fuelerate.css' | asset_url | stylesheet_tag: preload: true }}
 <div class="section--container main-product"
@@ -36,18 +46,17 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
                       when 'landscape'
                           assign ratio = 1 | divided_by: 0.75
                   endcase
+
+                  if forloop.first
+                    assign fetch_priority = 'high'
+                  else
+                    assign fetch_priority = false
+                  endif
                 -%}
                 <div class="product__media-item aspect-ratio" data-media-id="{{ media.id }}" style="--aspect-ratio-percentage: {{ 1 |  divided_by: ratio | times: 100 }}%;">
                 {% case media.media_type %}
                     {% when 'image' %}
-                    <img
-                        src="{{ media | image_url: width: 1200 }}"
-                        alt="{{ media.alt | escape }}"
-                        loading="lazy"
-                        width="{{ media.width }}"
-                        height="{{ media.height }}"
-                    >
-
+                    {% render 'responsive-image', image: image, sizes: '1380x0,690x0,315x0', priority: fetch_priority %}
                     {% when 'video' %}
                     {{
                         media
@@ -78,7 +87,6 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
             {% for block in section.blocks %}
             <div class="product--block" {{ block.shopify_attributes }}>
                 {% case block.type %}
-
                 {% when 'title' %}
                     <h1 class="product__title {%- if block.settings.uppercase %} product__title--uppercase{% endif %}">
                     {{ product.title | escape }}
@@ -220,13 +228,12 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
                     </div>
                 {% when 'tabs' %}
                   <product-tabs class="product__tabs">
-                    <div class="product__tabs-list" role="tablist">
+                    <div class="product__tabs-list">
                       {% if block.settings.tab_label_1 != blank and block.settings.tab_content_1 != blank %}
                         <button
                           type="button"
                           class="product__tab-button is-active"
                           aria-controls="ProductTabPanel-{{ section.id }}-{{ block.id }}-1"
-                          aria-selected="true"
                           data-tab-button
                         >
                           <span>{{ block.settings.tab_label_1 | escape }}</span>
@@ -238,7 +245,6 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
                           type="button"
                           class="product__tab-button"
                           aria-controls="ProductTabPanel-{{ section.id }}-{{ block.id }}-2"
-                          aria-selected="false"
                           data-tab-button
                         >
                           <span>{{ block.settings.tab_label_2 | escape }}</span>
@@ -250,7 +256,6 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
                           type="button"
                           class="product__tab-button"
                           aria-controls="ProductTabPanel-{{ section.id }}-{{ block.id }}-3"
-                          aria-selected="false"
                           data-tab-button
                         >
                           <span>{{ block.settings.tab_label_3 | escape }}</span>
@@ -262,7 +267,6 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
                           type="button"
                           class="product__tab-button"
                           aria-controls="ProductTabPanel-{{ section.id }}-{{ block.id }}-4"
-                          aria-selected="false"
                           data-tab-button
                         >
                           <span>{{ block.settings.tab_label_4 | escape }}</span>

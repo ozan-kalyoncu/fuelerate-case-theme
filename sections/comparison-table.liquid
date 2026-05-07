@@ -43,13 +43,7 @@
                 >
                 {% if block.settings.column_1_image != blank %}
                 <div class="comparison-table__cell--image">
-                    {{
-                    block.settings.column_1_image
-                    | image_url: width: 260
-                    | image_tag:
-                    loading: 'lazy',
-                    class: 'comparison-table__cell-image'
-                    }}
+                    {% render 'responsive-image', image: block.settings.column_1_image, sizes: '130x', classes: 'comparison-table__cell-image' %}
                 </div>
                 {% endif %}
                 <span>{{ block.settings.column_1_text | newline_to_br }}</span>
@@ -110,10 +104,11 @@
     </div>
 
     <div class="comparison-table__dots">
-        <button type="button" class="comparison-table__dot is-active" data-comparison-dot="0"></button>
-        <button type="button" class="comparison-table__dot" data-comparison-dot="1"></button>
-        <button type="button" class="comparison-table__dot" data-comparison-dot="2"></button>
-        <button type="button" class="comparison-table__dot" data-comparison-dot="3"></button>
+      {% for block in section.blocks %}
+        {% unless forloop.last %}
+        <button type="button" class="comparison-table__dot {%- if forloop.first %} is-active{% endif %}" data-comparison-dot="{{ forloop.index0 }}" name="dot"></button>
+        {% endunless %}
+      {% endfor %}
     </div>
 
     <product-form class="comparison-table__form">

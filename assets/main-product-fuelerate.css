@@ -8,6 +8,15 @@
   font-display: swap;
 }
 
+.lazyload {
+    filter: blur(10px);
+    opacity: 0.9;
+    will-change: opacity;
+}
+.lazyload.loaded {
+  filter: none;
+}
+
 .main-product {
   --font-heading: 'Recoleta', serif;
 

@@ -7,13 +7,7 @@
             data-video-id="VideoPopup-{{ section.id }}-{{ block.id }}-{{ index }}"
             aria-label="Open video"
         >
-            {{
-            image
-            | image_url: width: 240
-            | image_tag:
-                loading: 'lazy',
-                class: 'product__video-popup-image'
-            }}
+            {% render 'responsive-image', image: image, sizes: '240x0', classes: 'product__video-popup-image' %}
         </button>
 
         <div
