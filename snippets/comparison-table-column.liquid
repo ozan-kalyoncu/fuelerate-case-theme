@@ -1,0 +1,40 @@
+{% if column_title != blank %}
+  <div
+    class="comparison-table__column{% if active %} is-active{% endif %}"
+    data-comparison-slide
+  >
+    <div class="comparison-table__header">
+      {{ column_title | escape }}
+    </div>
+
+    <div class="comparsion-table__cell__container">
+        <div class="comparison-table__cell comparison-table__cell--featured">
+        <span>{{ featured_text | newline_to_br }}</span>
+        </div>
+
+        {% if row_2_text != blank %}
+        <div class="comparison-table__cell">
+            {{ row_2_text | newline_to_br }}
+        </div>
+        {% endif %}
+
+        {% if row_3_text != blank %}
+        <div class="comparison-table__cell">
+            {{ row_3_text | newline_to_br }}
+        </div>
+        {% endif %}
+
+        {% if row_4_text != blank %}
+        <div class="comparison-table__cell">
+            {{ row_4_text | newline_to_br }}
+        </div>
+        {% endif %}
+
+        {% if row_5_text != blank %}
+        <div class="comparison-table__cell">
+            {{ row_5_text | newline_to_br }}
+        </div>
+        {% endif %}
+    </div>
+  </div>
+{% endif %}

@@ -60,6 +60,9 @@
             </div>
             <!-- MIDDLE: Image -->
             <div class="benefits-showcase__media">
+                <div class="benefits-showcase-nav" data-benefits-prev>
+                  {% render 'svg-icons', icon: 'arrow' %}
+                </div>
                 {% for block in section.blocks %}
                 <div
                     class="benefits-showcase__image-panel{% if forloop.first %} is-active{% endif %}"
@@ -143,6 +146,9 @@
         </div>
         {% endif %}
     {% endfor %}
+    <div class="benefits-showcase-nav" data-benefits-next>
+      {% render 'svg-icons', icon: 'arrow' %}
+    </div>
     </div>
   </div>
 </benefits-showcase>
@@ -210,7 +216,9 @@
             { "value": "strength", "label": "Strength" },
             { "value": "tree", "label": "Tree" },
             { "value": "test_tube", "label": "Test Tube" },
-            { "value": "wash", "label": "Wash" }
+            { "value": "wash", "label": "Wash" },
+            { "value": "neurology", "label": "Neurology" },
+            { "value": "rheumatology", "label": "Rheumatology" }
           ],
           "default": "none"
         },
@@ -283,7 +291,9 @@
                 { "value": "strength", "label": "Strength" },
                 { "value": "tree", "label": "Tree" },
                 { "value": "test_tube", "label": "Test Tube" },
-                { "value": "wash", "label": "Wash" }
+                { "value": "wash", "label": "Wash" },
+                { "value": "neurology", "label": "Neurology" },
+                { "value": "rheumatology", "label": "Rheumatology" }
             ],
             "default": "none"
         },

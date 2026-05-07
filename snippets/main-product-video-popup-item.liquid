@@ -25,23 +25,17 @@
             <div class="product__video-popup-overlay" data-video-popup-close></div>
 
             <div class="product__video-popup-content" role="dialog" aria-modal="true">
-            <button
-                type="button"
-                class="product__video-popup-close"
-                data-video-popup-close
-                aria-label="Close video"
-            >
-                ×
-            </button>
-
-            {{
-                video
-                | video_tag:
-                controls: true,
-                autoplay: false,
-                loop: enable_video_looping,
-                class: 'product__video-popup-video'
-            }}
+                <div class="product__video-popup-close--container">
+                    <button
+                    type="button"
+                    class="product__video-popup-close"
+                    data-video-popup-close
+                    aria-label="Close video"
+                    >
+                        ×
+                    </button>
+                </div>
+                {{ video | video_tag: controls: true, autoplay: false, loop: enable_video_looping, class: 'product__video-popup-video' }}
             </div>
         </div>
     </div>

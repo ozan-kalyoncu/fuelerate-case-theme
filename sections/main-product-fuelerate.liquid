@@ -3,6 +3,7 @@
   assign enable_video_looping = section.settings.enable_video_looping
 
   assign background_color = section.settings.background_color | color_to_rgb | remove: 'rgb(' | remove: ')'
+  assign content_background = section.settings.content_background_color | color_to_rgb | remove: 'rgb(' | remove: ')'
   assign primary_text_color = section.settings.primary_text_color | color_to_rgb | remove: 'rgb(' | remove: ')'
   assign badge_color = section.settings.badge_color | color_to_rgb | remove: 'rgb(' | remove: ')'
   assign button_background_color = section.settings.button_background_color | color_to_rgb | remove: 'rgb(' | remove: ')'
@@ -15,7 +16,7 @@
 %}
 {{ 'main-product-fuelerate.css' | asset_url | stylesheet_tag: preload: true }}
 <div class="section--container main-product"
-style="--background-color: {{ background_color }};--primary-text:{{ primary_text_color }};--badge-color: {{ badge_color }};--button-background:{{ button_background_color }};--border-color: {{ border_color }};--alert-color: {{ alert_color }};--alert-bg-color: {{ alert_bg_color }};--success-color: {{ success_color }};--success-bg-color: {{ success_bg_color }};--compare-price-color: {{ compare_price_color }};">
+style="--background-color: {{ background_color }};--content-bg-color: {{ content_background }};--primary-text:{{ primary_text_color }};--badge-color: {{ badge_color }};--button-background:{{ button_background_color }};--border-color: {{ border_color }};--alert-color: {{ alert_color }};--alert-bg-color: {{ alert_bg_color }};--success-color: {{ success_color }};--success-bg-color: {{ success_bg_color }};--compare-price-color: {{ compare_price_color }};">
     <div class="section--container__inner">
         <div class="product-media--container">
             {% for media in product.media %}
@@ -153,13 +154,13 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
                           %}
 
                           <span class="product__price-badge product__price-badge--save">
-                            Save %{{ saved_percentage }} OFF
+                            {{ section.settings.sale_badge_label }}&nbsp;%{{ saved_percentage }}
                           </span>
                         {% endif %}
 
                         {% unless available %}
                           <span class="product__price-badge product__price-badge--sold-out">
-                            Sold out
+                            {{ section.settings.sold_out_badge_label }}
                           </span>
                         {% endunless %}
                       </div>
@@ -476,9 +477,9 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
                           {% endunless %}
                         >
                           {% if selected_variant.available %}
-                            Add to cart
+                            {{ section.settings.add_to_cart_label }}
                           {% else %}
-                            Sold out
+                            {{ section.settings.sold_out_label }}
                           {% endif %}
                         </button>
                       {% endform %}
@@ -548,6 +549,12 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
     },
     {
       "type": "color",
+      "id": "content_background_color",
+      "label": "Content background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
       "id": "primary_text_color",
       "label": "Primary text color",
       "default": "#31331E"
@@ -599,6 +606,38 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
       "id": "compare_price_color",
       "label": "Compare price color",
       "default": "#FF3030"
+    },
+    {
+      "type": "header",
+      "content": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "add_to_cart_label",
+      "label": "Add to cart label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_label",
+      "label": "Sold out label",
+      "default": "Sold out"
+    },
+    {
+      "type": "header",
+      "content": "Price badges"
+    },
+    {
+      "type": "text",
+      "id": "sale_badge_label",
+      "label": "Sale badge label",
+      "default": "Save"
+    },
+    {
+      "type": "text",
+      "id": "sold_out_badge_label",
+      "label": "Sold out badge label",
+      "default": "Sold out"
     }
   ],
   "blocks": [
@@ -701,6 +740,8 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
             { "value": "tree", "label": "Tree" },
             { "value": "test_tube", "label": "Test Tube" },
             { "value": "wash", "label": "Wash" },
+            { "value": "neurology", "label": "Neurology" },
+            { "value": "rheumatology", "label": "Rheumatology" }
           ],
           "default": "battery"
         },
@@ -736,6 +777,8 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
             { "value": "tree", "label": "Tree" },
             { "value": "test_tube", "label": "Test Tube" },
             { "value": "wash", "label": "Wash" },
+            { "value": "neurology", "label": "Neurology" },
+            { "value": "rheumatology", "label": "Rheumatology" }
           ],
           "default": "battery"
         },
@@ -770,6 +813,8 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
             { "value": "tree", "label": "Tree" },
             { "value": "test_tube", "label": "Test Tube" },
             { "value": "wash", "label": "Wash" },
+            { "value": "neurology", "label": "Neurology" },
+            { "value": "rheumatology", "label": "Rheumatology" }
           ],
           "default": "battery"
         },
@@ -805,6 +850,8 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
             { "value": "tree", "label": "Tree" },
             { "value": "test_tube", "label": "Test Tube" },
             { "value": "wash", "label": "Wash" },
+            { "value": "neurology", "label": "Neurology" },
+            { "value": "rheumatology", "label": "Rheumatology" }
           ],
           "default": "battery"
         },
@@ -840,6 +887,8 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
             { "value": "tree", "label": "Tree" },
             { "value": "test_tube", "label": "Test Tube" },
             { "value": "wash", "label": "Wash" },
+            { "value": "neurology", "label": "Neurology" },
+            { "value": "rheumatology", "label": "Rheumatology" }
           ],
           "default": "battery"
         },
@@ -875,6 +924,8 @@ style="--background-color: {{ background_color }};--primary-text:{{ primary_text
             { "value": "tree", "label": "Tree" },
             { "value": "test_tube", "label": "Test Tube" },
             { "value": "wash", "label": "Wash" },
+            { "value": "neurology", "label": "Neurology" },
+            { "value": "rheumatology", "label": "Rheumatology" }
           ],
           "default": "battery"
         },

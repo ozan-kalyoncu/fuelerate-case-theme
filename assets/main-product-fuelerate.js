@@ -42,7 +42,7 @@ if (!customElements.get('video-popups')) {
             if (!modal) return;
 
             modal.hidden = false;
-            document.documentElement.classList.add('overflow-hidden');
+            document.body.classList.add('body-overflow-hidden');
         }
 
         onCloseClick(event) {
@@ -67,7 +67,7 @@ if (!customElements.get('video-popups')) {
             if (video) video.pause();
 
             modal.hidden = true;
-            document.documentElement.classList.remove('overflow-hidden');
+            document.body.classList.remove('body-overflow-hidden');
         }
     }
     customElements.define('video-popups', VideoPopups);

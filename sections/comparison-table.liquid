@@ -1,0 +1,313 @@
+{% liquid
+  assign selected_variant = product.selected_or_first_available_variant
+
+  assign background_color = section.settings.background_color
+  assign table_background_color = section.settings.table_background_color
+  assign text_color = section.settings.text_color
+  assign button_background_color = section.settings.button_background_color
+  assign border_color = section.settings.border_color | color_to_rgb | remove:'rgb(' | remove: ')'
+%}
+{{ 'comparison-table.css' | asset_url | stylesheet_tag }}
+<section
+  class="comparison-table"
+  style="
+    --comparison-background: {{ background_color }};
+    --comparison-table-background: {{ table_background_color }};
+    --comparison-text: {{ text_color }};
+    --comparison-button-background: {{ button_background_color }};
+    --comparison-border: {{ border_color }};
+  "
+>
+  <div class="comparison-table__inner">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="comparison-table__heading">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {% endif %}
+
+    <div class="comparison-table__table">
+        <div class="comparison-table__column comparison-table__column--solution">
+            {% if section.settings.column_1_title != blank %}
+            <div class="comparison-table__header">
+                {{ section.settings.column_1_title | escape }}
+            </div>
+            {% endif %}
+
+            <div class="comparsion-table__cell__container">
+            {% for block in section.blocks %}
+            {% if block.settings.column_1_text != blank or block.settings.column_1_image != blank %}
+                <div
+                class="comparison-table__cell{% if forloop.first %} comparison-table__cell--featured{% endif %}"
+                {{ block.shopify_attributes }}
+                >
+                {% if block.settings.column_1_image != blank %}
+                <div class="comparison-table__cell--image">
+                    {{
+                    block.settings.column_1_image
+                    | image_url: width: 260
+                    | image_tag:
+                    loading: 'lazy',
+                    class: 'comparison-table__cell-image'
+                    }}
+                </div>
+                {% endif %}
+                <span>{{ block.settings.column_1_text | newline_to_br }}</span>
+                </div>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+
+        <comparison-table-slider class="comparison-table__columns-slider">
+            <div class="comparison-table__columns-track" data-comparison-track>
+                {% liquid
+                assign row_1 = section.blocks[0]
+                assign row_2 = section.blocks[1]
+                assign row_3 = section.blocks[2]
+                assign row_4 = section.blocks[3]
+                assign row_5 = section.blocks[4]
+                %}
+
+                {% render 'comparison-table-column',
+                column_title: section.settings.column_2_title,
+                active: true,
+                featured_text: row_1.settings.column_2_text,
+                row_2_text: row_2.settings.column_2_text,
+                row_3_text: row_3.settings.column_2_text,
+                row_4_text: row_4.settings.column_2_text,
+                row_5_text: row_5.settings.column_2_text
+                %}
+
+                {% render 'comparison-table-column',
+                column_title: section.settings.column_3_title,
+                featured_text: row_1.settings.column_3_text,
+                row_2_text: row_2.settings.column_3_text,
+                row_3_text: row_3.settings.column_3_text,
+                row_4_text: row_4.settings.column_3_text,
+                row_5_text: row_5.settings.column_3_text
+                %}
+
+                {% render 'comparison-table-column',
+                column_title: section.settings.column_4_title,
+                featured_text: row_1.settings.column_4_text,
+                row_2_text: row_2.settings.column_4_text,
+                row_3_text: row_3.settings.column_4_text,
+                row_4_text: row_4.settings.column_4_text,
+                row_5_text: row_5.settings.column_4_text
+                %}
+
+                {% render 'comparison-table-column',
+                column_title: section.settings.column_5_title,
+                featured_text: row_1.settings.column_5_text,
+                row_2_text: row_2.settings.column_5_text,
+                row_3_text: row_3.settings.column_5_text,
+                row_4_text: row_4.settings.column_5_text,
+                row_5_text: row_5.settings.column_5_text
+                %}
+            </div>
+        </comparison-table-slider>
+    </div>
+
+    <div class="comparison-table__dots">
+        <button type="button" class="comparison-table__dot is-active" data-comparison-dot="0"></button>
+        <button type="button" class="comparison-table__dot" data-comparison-dot="1"></button>
+        <button type="button" class="comparison-table__dot" data-comparison-dot="2"></button>
+        <button type="button" class="comparison-table__dot" data-comparison-dot="3"></button>
+    </div>
+
+    <product-form class="comparison-table__form">
+        {%- assign form_id = 'ComparisonTableForm-' | append: section.id -%}
+        {% form 'product', product, id: form_id  %}
+            <input
+            type="hidden"
+            name="id"
+            value="{{ selected_variant.id }}"
+            >
+
+            <button
+            type="submit"
+            name="add"
+            class="comparison-table__button"
+            {% unless selected_variant.available %}disabled{% endunless %}
+            >
+            {% if selected_variant.available %}
+                {{ section.settings.button_label | escape }}
+            {% else %}
+                Sold out
+            {% endif %}
+            </button>
+        {% endform %}
+    </product-form>
+
+  </div>
+</section>
+<script src="{{ 'comparison-table-slider.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Comparison table",
+  "tag": "section",
+  "class": "section-comparison-table",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why We Are Really Different"
+    },
+    {
+      "type": "header",
+      "content": "Column titles"
+    },
+    {
+      "type": "text",
+      "id": "column_1_title",
+      "label": "Column 1",
+      "default": "Solution"
+    },
+    {
+      "type": "text",
+      "id": "column_2_title",
+      "label": "Column 2",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "id": "column_3_title",
+      "label": "Column 3",
+      "default": "What to consider"
+    },
+    {
+      "type": "text",
+      "id": "column_4_title",
+      "label": "Column 4",
+      "default": "Cost over time"
+    },
+    {
+      "type": "text",
+      "id": "column_5_title",
+      "label": "Column 5",
+      "default": "Side effects"
+    },
+    {
+      "type": "header",
+      "content": "Add to cart"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#F4F3EE"
+    },
+    {
+      "type": "color",
+      "id": "table_background_color",
+      "label": "Table background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#31331E"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Add to cart background",
+      "default": "#A8CA1B"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#D0D0C8"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Column 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "column_1_image",
+            "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "column_1_text",
+          "label": "Text",
+          "default": "Terra Therapy"
+        },
+        {
+          "type": "header",
+          "content": "Column 2"
+        },
+        {
+          "type": "textarea",
+          "id": "column_2_text",
+          "label": "Text",
+          "default": "Reconnects body to Earth's natural charge to reduce inflammation and improve sleep"
+        },
+        {
+          "type": "header",
+          "content": "Column 3"
+        },
+        {
+          "type": "textarea",
+          "id": "column_3_text",
+          "label": "Text",
+          "default": "Requires grounded outlet and direct skin contact for best results"
+        },
+        {
+          "type": "header",
+          "content": "Column 4"
+        },
+        {
+          "type": "textarea",
+          "id": "column_4_text",
+          "label": "Text",
+          "default": "One-time purchase"
+        },
+        {
+          "type": "header",
+          "content": "Column 5"
+        },
+        {
+          "type": "textarea",
+          "id": "column_5_text",
+          "label": "Text",
+          "default": "None - 100% safe, drug-free"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison table",
+      "blocks": [
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" }
+      ]
+    }
+  ]
+}
+{% endschema %}
