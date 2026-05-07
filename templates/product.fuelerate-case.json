@@ -77,14 +77,15 @@
           "type": "video_popups",
           "settings": {
             "heading": "Real People. Real Healing.",
-            "image_1": "shopify://shop_images/video-popup-image-1.jpg",
-            "image_2": "shopify://shop_images/video-popup-image-2.jpg",
+            "image_1": "shopify://shop_images/Ellipse_94.png",
+            "video_1": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4",
+            "image_2": "shopify://shop_images/Ellipse_95.png",
             "video_2": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4",
-            "image_3": "shopify://shop_images/video-popup-image-1.jpg",
+            "image_3": "shopify://shop_images/Ellipse_94.png",
             "video_3": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4",
-            "image_4": "shopify://shop_images/video-popup-image-2.jpg",
+            "image_4": "shopify://shop_images/Ellipse_95.png",
             "video_4": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4",
-            "image_5": "shopify://shop_images/video-popup-image-1.jpg",
+            "image_5": "shopify://shop_images/Ellipse_94.png",
             "video_5": "shopify://files/videos/b300b188cb5543c7b145ddb4e8632a28.HD-1080p-2.5Mbps-35878940 (1).mp4"
           }
         },
@@ -367,9 +368,9 @@
         "column_5_title": "Side effects",
         "button_label": "Add to cart",
         "background_color": "#f4f3ee",
-        "table_background_color": "#FFFFFF",
-        "text_color": "#31331E",
-        "button_background_color": "#A8CA1B",
+        "table_background_color": "#ffffff",
+        "text_color": "#31331e",
+        "button_background_color": "#a8ca1b",
         "border_color": "#31331e"
       }
     }
