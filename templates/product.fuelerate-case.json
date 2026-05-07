@@ -192,7 +192,7 @@
         "benefit_GTQm4T": {
           "type": "benefit",
           "settings": {
-            "icon": "none",
+            "icon": "neurology",
             "title": "Neurological & Mental Health",
             "image": "shopify://shop_images/brain.jpg",
             "content_heading": "Neurological & Mental Health",
@@ -206,7 +206,7 @@
         "benefit_daiqbe": {
           "type": "benefit",
           "settings": {
-            "icon": "none",
+            "icon": "rheumatology",
             "title": "Musculoskeletal Pain & Inflammation",
             "image": "shopify://shop_images/skeleton.jpg",
             "content_heading": "Musculoskeletal Pain & Inflammation",
