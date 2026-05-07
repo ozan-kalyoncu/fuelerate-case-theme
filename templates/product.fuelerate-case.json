@@ -126,6 +126,7 @@
         "image_aspect_ratio": "adapt",
         "enable_video_looping": true,
         "background_color": "#f4f3ee",
+        "content_background_color": "#ffffff",
         "primary_text_color": "#31331e",
         "badge_color": "#56814c",
         "button_background_color": "#a8ca1b",
@@ -134,7 +135,11 @@
         "alert_label_bg_color": "#ff8181",
         "success_color": "#2aac11",
         "success_label_bg_color": "#7aa66f",
-        "compare_price_color": "#ff3030"
+        "compare_price_color": "#ff3030",
+        "add_to_cart_label": "Add to cart",
+        "sold_out_label": "Sold out",
+        "sale_badge_label": "Save",
+        "sold_out_badge_label": "Sold out"
       }
     },
     "text_with_icons_bar_fx8KT4": {
@@ -285,11 +290,94 @@
         "primary_color": "#31331e",
         "enable_auto_slide": true
       }
+    },
+    "comparison_table_WemEib": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_edBycV": {
+          "type": "row",
+          "settings": {
+            "column_1_image": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__97877_1.png",
+            "column_1_text": "Terra Therapy",
+            "column_2_text": "Reconnects body to Earth's natural charge to reduce inflammation and improve sleep",
+            "column_3_text": "Requires grounded outlet and direct skin contact for best results",
+            "column_4_text": "One-time purchase",
+            "column_5_text": "None - 100% safe, drug-free"
+          }
+        },
+        "row_LKWVC3": {
+          "type": "row",
+          "settings": {
+            "column_1_image": "shopify://shop_images/freepik__create-a-floating-white-bottle-with-the-label-writ__33421_1.png",
+            "column_1_text": "Sleeping Pills",
+            "column_2_text": "Sedate the brain with sleep-inducing chemicals",
+            "column_3_text": "Tolerance builds, grogginess, not long-term safe",
+            "column_4_text": "Ongoing",
+            "column_5_text": "Dependency & side effects"
+          }
+        },
+        "row_dJf6ek": {
+          "type": "row",
+          "settings": {
+            "column_1_image": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__33422_1.png",
+            "column_1_text": "Pain Meds",
+            "column_2_text": "Block pain signals temporarily",
+            "column_3_text": "Doesn't treat root cause, side effects common",
+            "column_4_text": "High if chronic",
+            "column_5_text": "Risk of addiction or long-term damage"
+          }
+        },
+        "row_gMcyWK": {
+          "type": "row",
+          "settings": {
+            "column_1_image": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__33423_1.png",
+            "column_1_text": "Chiropractor",
+            "column_2_text": "Manual realignment of joints/spine",
+            "column_3_text": "Frequent visits needed, temporary relief",
+            "column_4_text": "High recurring cost",
+            "column_5_text": "Not suitable for every condition"
+          }
+        },
+        "row_68afD7": {
+          "type": "row",
+          "settings": {
+            "column_1_image": "shopify://shop_images/freepik__candid-photography-with-natural-textures-and-highl__33425_1.png",
+            "column_1_text": "Supplements",
+            "column_2_text": "Target isolated symptoms like melatonin or blue light",
+            "column_3_text": "Vary in effectiveness, often don't address the root",
+            "column_4_text": "Ongoing",
+            "column_5_text": "Often unproven or inconsistent"
+          }
+        }
+      },
+      "block_order": [
+        "row_edBycV",
+        "row_LKWVC3",
+        "row_dJf6ek",
+        "row_gMcyWK",
+        "row_68afD7"
+      ],
+      "name": "Comparison table",
+      "settings": {
+        "heading": "Why We Are Really Different",
+        "column_1_title": "Solution",
+        "column_2_title": "How it works",
+        "column_3_title": "What to consider",
+        "column_4_title": "Cost over time",
+        "column_5_title": "Side effects",
+        "button_label": "Add to cart",
+        "background_color": "#F4F3EE",
+        "table_background_color": "#FFFFFF",
+        "text_color": "#31331E",
+        "button_background_color": "#A8CA1B",
+        "border_color": "#D0D0C8"
+      }
     }
   },
   "order": [
     "main",
     "text_with_icons_bar_fx8KT4",
-    "benefits_showcase_EebFQh"
+    "benefits_showcase_EebFQh",
+    "comparison_table_WemEib"
   ]
 }
