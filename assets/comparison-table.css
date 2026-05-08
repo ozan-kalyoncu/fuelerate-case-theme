@@ -92,13 +92,14 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--background-color);
+  background: var(--mobile-bg-color);
   transform: scale(1.09);
   border-radius: 3.4px;
 }
 
 .comparison-table__column--solution .comparison-table__cell--featured::before {
-    transform: scale(1.2, 1.04)
+    transform: scale(1.2, 1.04);
+    background: var(--background-color);
 }
 
 .comparison-table__column--solution .comparison-table__cell {
@@ -185,7 +186,7 @@
 }
 
 .comparison-table__dot.is-active {
-  background: var(--comparison-button-background);
+  background: rgb(var(--comparison-button-background));
 }
 
 .comparison-table__form {
@@ -204,13 +205,18 @@
   padding: 16px 32px;
   border: 0;
   border-radius: 999px;
-  background: var(--comparison-button-background);
+  background: rgba(var(--comparison-button-background), 1);
   color: var(--comparison-text);
   font-family: 'Recoleta', serif;
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
   text-transform: uppercase;
+  transition: background 0.5s ease-in-out;
+}
+
+.comparison-table__button:hover {
+  background: rgba(var(--comparison-button-background), 0.6);
 }
 
 .comparison-table__button:disabled {
@@ -324,6 +330,10 @@
     transform-origin: left;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+  }
+
+  .comparison-table__cell--featured::before {
+    background: var(--background-color);
   }
 
   .comparison-table__cell--featured + .comparison-table__cell {

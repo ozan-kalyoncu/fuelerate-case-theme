@@ -4,7 +4,7 @@
   assign background_color = section.settings.background_color
   assign table_background_color = section.settings.table_background_color
   assign text_color = section.settings.text_color
-  assign button_background_color = section.settings.button_background_color
+  assign button_background_color = section.settings.button_background_color | color_to_rgb | remove:'rgb(' | remove: ')'
   assign border_color = section.settings.border_color | color_to_rgb | remove:'rgb(' | remove: ')'
 %}
 {{ 'comparison-table.css' | asset_url | stylesheet_tag }}
@@ -69,7 +69,8 @@
                 column_title: section.settings.column_2_title,
                 active: true,
                 featured_text: row_1.settings.column_2_text,
-                featured_column_background: section.settings.featured_column_2_background
+                featured_column_background: section.settings.featured_column_2_background,
+                featured_column_mobile_background: section.settings.featured_column_mobile_background
                 row_2_text: row_2.settings.column_2_text,
                 row_3_text: row_3.settings.column_2_text,
                 row_4_text: row_4.settings.column_2_text,
@@ -79,7 +80,8 @@
                 {% render 'comparison-table-column',
                 column_title: section.settings.column_3_title,
                 featured_text: row_1.settings.column_3_text,
-                featured_column_background: section.settings.featured_column_3_background
+                featured_column_background: section.settings.featured_column_3_background,
+                featured_column_mobile_background: section.settings.featured_column_mobile_background
                 row_2_text: row_2.settings.column_3_text,
                 row_3_text: row_3.settings.column_3_text,
                 row_4_text: row_4.settings.column_3_text,
@@ -89,7 +91,8 @@
                 {% render 'comparison-table-column',
                 column_title: section.settings.column_4_title,
                 featured_text: row_1.settings.column_4_text,
-                featured_column_background: section.settings.featured_column_4_background
+                featured_column_background: section.settings.featured_column_4_background,
+                featured_column_mobile_background: section.settings.featured_column_mobile_background
                 row_2_text: row_2.settings.column_4_text,
                 row_3_text: row_3.settings.column_4_text,
                 row_4_text: row_4.settings.column_4_text,
@@ -99,7 +102,8 @@
                 {% render 'comparison-table-column',
                 column_title: section.settings.column_5_title,
                 featured_text: row_1.settings.column_5_text,
-                featured_column_background: section.settings.featured_column_5_background
+                featured_column_background: section.settings.featured_column_5_background,
+                featured_column_mobile_background: section.settings.featured_column_mobile_background
                 row_2_text: row_2.settings.column_5_text,
                 row_3_text: row_3.settings.column_5_text,
                 row_4_text: row_4.settings.column_5_text,
@@ -117,7 +121,7 @@
       {% endfor %}
     </div>
 
-    <product-form class="comparison-table__form">
+    <product-add-to-cart class="comparison-table__form">
         {%- assign form_id = 'ComparisonTableForm-' | append: section.id -%}
         {% form 'product', product, id: form_id  %}
             <input
@@ -139,7 +143,7 @@
             {% endif %}
             </button>
         {% endform %}
-    </product-form>
+    </product-add-to-cart>
 
   </div>
 </section>
@@ -170,7 +174,7 @@
       "type": "color_background",
       "id": "featured_column_1_background",
       "label": "Featured column background",
-      "default": "linear-gradient(90deg, #A9C78F 0%, #8FB978 42%, #6C9E5A 100% )"
+      "default": "linear-gradient(90deg, #5B914E 0%, #76A862 0%, #AFCB92 100%)"
     },
     {
       "type": "text",
@@ -219,6 +223,12 @@
       "id": "featured_column_5_background",
       "label": "Featured column background",
       "default": "radial-gradient(circle at 12% 10%, #7FA36F 0%, #487F46 30%, #306B3A 64%, #256837 100%)"
+    },
+    {
+      "type": "color_background",
+      "id": "featured_column_mobile_background",
+      "label": "Featured column mobile background",
+      "default": "radial-gradient(ellipse at bottom center, #AFCB92 0%, #76A862 38%, #5B914E 100%)"
     },
     {
       "type": "header",

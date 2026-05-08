@@ -90,6 +90,11 @@ button {
   color: rgb(var(--primary-text));
 }
 
+.product__add-button[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 /* Product media */
 
 .product-media--container {
@@ -133,6 +138,13 @@ button {
 .product__add-button,
 .product__video-popups-heading {
   font-family: var(--font-heading);
+}
+
+.product__price-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 .product__title {

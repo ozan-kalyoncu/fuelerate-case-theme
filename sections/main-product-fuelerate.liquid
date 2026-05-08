@@ -464,7 +464,7 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
                       assign form_id = 'ProductForm-' | append: section.id
                     %}
 
-                    <product-form class="product__form">
+                    <product-add-to-cart class="product__form">
                       {% form 'product', product, id: form_id, class: 'product__product-form' %}
                         <input
                           type="hidden"
@@ -487,7 +487,7 @@ style="--background-color: {{ background_color }};--content-bg-color: {{ content
                           {% endif %}
                         </button>
                       {% endform %}
-                    </product-form>
+                    </product-add-to-cart>
 
                 {% when 'divider' %}
                     <div

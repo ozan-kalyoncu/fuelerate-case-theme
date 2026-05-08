@@ -186,3 +186,67 @@ if (!customElements.get('product-tabs')) {
     }
     customElements.define('product-tabs', ProductTabs);
 }
+if (!customElements.get('product-form')) {
+  class ProductAddToCart extends HTMLElement {
+    constructor() {
+      super();
+
+      this.form = this.querySelector('form');
+      this.button = this.querySelector('[type="submit"]');
+      this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    connectedCallback() {
+      if (!this.form) return;
+      this.form.addEventListener('submit', this.onSubmit);
+    }
+
+    disconnectedCallback() {
+      if (!this.form) return;
+      this.form.removeEventListener('submit', this.onSubmit);
+    }
+
+    async onSubmit(event) {
+      event.preventDefault();
+
+      if (!this.form || !this.button) return;
+
+      this.button.setAttribute('aria-disabled', 'true');
+      this.button.classList.add('is-loading');
+
+      const formData = new FormData(this.form);
+
+      try {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json'
+          },
+          body: formData
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.description || 'Error adding product to cart');
+        }
+
+        await response.json();
+
+        document.dispatchEvent(
+          new CustomEvent('cart:refresh', {
+            bubbles: true
+          })
+        );
+        window.location.href = '/cart';
+        
+      } catch (error) {
+        console.error(error);
+      } finally {
+        this.button.removeAttribute('aria-disabled');
+        this.button.classList.remove('is-loading');
+      }
+    }
+  }
+
+  customElements.define('product-add-to-cart', ProductAddToCart);
+}
