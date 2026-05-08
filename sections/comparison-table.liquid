@@ -38,7 +38,7 @@
             {% for block in section.blocks %}
             {% if block.settings.column_1_text != blank or block.settings.column_1_image != blank %}
                 <div
-                class="comparison-table__cell{% if forloop.first %} comparison-table__cell--featured{% endif %}"
+                class="comparison-table__cell{% if forloop.first %} comparison-table__cell--featured{% endif %}{% unless block.settings.column_1_text != blank %} comparison-table__cell-no-padding{% endunless %}" style="--background-color: {{ section.settings.featured_column_1_background }}"
                 {{ block.shopify_attributes }}
                 >
                 {% if block.settings.column_1_image != blank %}
@@ -46,7 +46,9 @@
                     {% render 'responsive-image', image: block.settings.column_1_image, sizes: '130x', classes: 'comparison-table__cell-image' %}
                 </div>
                 {% endif %}
+                {% if block.settings.column_1_text != blank %}
                 <span>{{ block.settings.column_1_text | newline_to_br }}</span>
+                {% endif %}
                 </div>
             {% endif %}
             {% endfor %}
@@ -67,6 +69,7 @@
                 column_title: section.settings.column_2_title,
                 active: true,
                 featured_text: row_1.settings.column_2_text,
+                featured_column_background: section.settings.featured_column_2_background
                 row_2_text: row_2.settings.column_2_text,
                 row_3_text: row_3.settings.column_2_text,
                 row_4_text: row_4.settings.column_2_text,
@@ -76,6 +79,7 @@
                 {% render 'comparison-table-column',
                 column_title: section.settings.column_3_title,
                 featured_text: row_1.settings.column_3_text,
+                featured_column_background: section.settings.featured_column_3_background
                 row_2_text: row_2.settings.column_3_text,
                 row_3_text: row_3.settings.column_3_text,
                 row_4_text: row_4.settings.column_3_text,
@@ -85,6 +89,7 @@
                 {% render 'comparison-table-column',
                 column_title: section.settings.column_4_title,
                 featured_text: row_1.settings.column_4_text,
+                featured_column_background: section.settings.featured_column_4_background
                 row_2_text: row_2.settings.column_4_text,
                 row_3_text: row_3.settings.column_4_text,
                 row_4_text: row_4.settings.column_4_text,
@@ -94,6 +99,7 @@
                 {% render 'comparison-table-column',
                 column_title: section.settings.column_5_title,
                 featured_text: row_1.settings.column_5_text,
+                featured_column_background: section.settings.featured_column_5_background
                 row_2_text: row_2.settings.column_5_text,
                 row_3_text: row_3.settings.column_5_text,
                 row_4_text: row_4.settings.column_5_text,
@@ -106,7 +112,7 @@
     <div class="comparison-table__dots">
       {% for block in section.blocks %}
         {% unless forloop.last %}
-        <button type="button" class="comparison-table__dot {%- if forloop.first %} is-active{% endif %}" data-comparison-dot="{{ forloop.index0 }}" name="dot"></button>
+        <button type="button" class="comparison-table__dot {%- if forloop.first %} is-active{% endif %}" data-comparison-dot="{{ forloop.index0 }}" aria-label="dot"></button>
         {% endunless %}
       {% endfor %}
     </div>
@@ -161,10 +167,22 @@
       "default": "Solution"
     },
     {
+      "type": "color_background",
+      "id": "featured_column_1_background",
+      "label": "Featured column background",
+      "default": "linear-gradient(90deg, #A9C78F 0%, #8FB978 42%, #6C9E5A 100% )"
+    },
+    {
       "type": "text",
       "id": "column_2_title",
       "label": "Column 2",
       "default": "How it works"
+    },
+    {
+      "type": "color_background",
+      "id": "featured_column_2_background",
+      "label": "Featured column background",
+      "default": "linear-gradient(90deg, #97BC7B 0%, #78A965 42%, #4E8448 100%)"
     },
     {
       "type": "text",
@@ -173,16 +191,34 @@
       "default": "What to consider"
     },
     {
+      "type": "color_background",
+      "id": "featured_column_3_background",
+      "label": "Featured column background",
+      "default": "linear-gradient(90deg, #4F8448 0%, #437B43 38%, #36723D 100%)"
+    },
+    {
       "type": "text",
       "id": "column_4_title",
       "label": "Column 4",
       "default": "Cost over time"
     },
     {
+      "type": "color_background",
+      "id": "featured_column_4_background",
+      "label": "Featured column background",
+      "default": "radial-gradient(circle at 92% 8%, #789D6A 0%, #467D45 24%, #326D3A 58%, #286837 100%)"
+    },
+    {
       "type": "text",
       "id": "column_5_title",
       "label": "Column 5",
       "default": "Side effects"
+    },
+    {
+      "type": "color_background",
+      "id": "featured_column_5_background",
+      "label": "Featured column background",
+      "default": "radial-gradient(circle at 12% 10%, #7FA36F 0%, #487F46 30%, #306B3A 64%, #256837 100%)"
     },
     {
       "type": "header",
