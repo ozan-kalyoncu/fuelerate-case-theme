@@ -362,9 +362,9 @@
       "settings": {
         "heading": "Why We Are Really Different",
         "column_1_title": "Solution",
-        "featured_column_1_background": "linear-gradient(90deg, rgba(91, 145, 78, 1), rgba(118, 168, 98, 1), rgba(175, 203, 146, 1) 100%)",
+        "featured_column_1_background": "linear-gradient(90deg, #5B914E 0%, #76A862 0%, #AFCB92 100%)",
         "column_2_title": "How it works",
-        "featured_column_2_background": "linear-gradient(90deg, rgba(151, 188, 123, 1), rgba(120, 169, 101, 1) 42%, rgba(78, 132, 72, 1) 100%)",
+        "featured_column_2_background": "linear-gradient(90deg, #97BC7B 0%, #78A965 42%, #4E8448 100%)",
         "column_3_title": "What to consider",
         "featured_column_3_background": "linear-gradient(90deg, #4F8448 0%, #437B43 38%, #36723D 100%)",
         "column_4_title": "Cost over time",
